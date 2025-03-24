@@ -13,4 +13,4 @@ agent = initialize_agent(
     verbose=True,
 )
 
-agent.run("What can I make with these ingredients? https://images.openai.com/blob/9ad5a2ab-041f-475f-ad6a-b51899c50182/ingredients.png")
+agent.run("What can I make with these ingredients?")
