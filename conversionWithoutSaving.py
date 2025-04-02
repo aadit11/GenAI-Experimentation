@@ -38,7 +38,6 @@ def handle_input_from_terminal(pdf_path, previous_context=None):
     document = Document()
     document.add_paragraph(csv_content)
 
-    # Use Text Splitter (you can customize this part based on your needs)
     split_text = "\n".join([paragraph.text for paragraph in document.paragraphs])
 
     user_message = HumanMessage(content=split_text, context=previous_context)

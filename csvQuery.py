@@ -53,8 +53,7 @@ with open(csv_file_path, "r", newline="", encoding="utf-8") as csv_file:
     csv_reader = csv.reader(csv_file)
     data = list(csv_reader)
 
-# Process the data or perform any required analysis
-# For example, you can convert it into a single string for further processing
+
 detected_text = ""
 for row in data:
     detected_text += ",".join(row) + "\n"

@@ -36,7 +36,7 @@ def ask_model(prompt):
     )
     return response
 
-# Your existing code for processing the PDF file
+
 pdf_file_obj = open("data\file.pdf", "rb")
 pdf_reader = PyPDF2.PdfReader(pdf_file_obj)
 num_pages = len(pdf_reader.pages)
@@ -53,14 +53,12 @@ texts = text_splitter.create_documents([detected_text])
 
 directory = "index_store"
 
-# Replace the ChromaVectorDatabase with Chroma
 vector_index = Chroma.from_documents(texts, AzureOpenAIEmbeddings(
     azure_endpoint=GPT_4_API_BASE,
     deployment=EmbeddingModelDeploymentName,
 ))
 
 
-# Create the retriever
 retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
 
 # Update the qa_interface

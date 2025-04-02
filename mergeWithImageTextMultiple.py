@@ -38,23 +38,19 @@ def handle_text_input():
             speak(response_text)
 
 def create_video_with_audio(image_path, audio_path, output_path="output_video.mp4"):
-    image = ImageClip(image_path, duration=10)  # Adjust duration as needed
+    image = ImageClip(image_path, duration=10)  
     audio = AudioFileClip(audio_path)
 
-    # Set the audio for the image clip
     image = image.set_audio(audio)
 
-    # Second image
-    image2 = ImageClip("input_image1.png", duration=5)  # Adjust duration as needed
+    image2 = ImageClip("input_image1.png", duration=5)  
 
-    # Concatenate the image clips
     final_clip = concatenate_videoclips([image, image2], method="compose")
 
-    # Write the final video with audio
     final_clip.write_videofile(output_path, codec="libx264", audio_codec="aac", fps=24)
 
 if __name__ == "__main__":
-    handle_text_input()  # Collect text input
-    audio_path = "temp.wav"  # Replace with the actual path to your temp audio file
-    image_path = "input_image.png"  # Replace with the actual path to your input image
-    create_video_with_audio(image_path, audio_path)  # Create the output video
+    handle_text_input()  
+    audio_path = "temp.wav"  
+    image_path = "input_image.png"  
+    create_video_with_audio(image_path, audio_path)  

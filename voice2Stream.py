@@ -53,7 +53,6 @@ def handle_voice_input():
         response_generator = llm.stream([user_message])
 
         for chunk in response_generator:
-            # Stream and speak each word as it comes
             speak_word_by_word(chunk.content.strip())
             print(chunk.content.strip(), end=' ', flush=True)
 

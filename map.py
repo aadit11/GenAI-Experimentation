@@ -68,7 +68,6 @@ def ask_model(prompt):
     )
     return response
 
-# Your existing code for processing the PDF file
 pdf_file_obj = open("data\file.pdf", "rb")
 pdf_reader = PyPDF2.PdfReader(pdf_file_obj)
 num_pages = len(pdf_reader.pages)
@@ -94,11 +93,9 @@ vector_index = FAISS.load_local("index_store", AzureOpenAIEmbeddings(
     azure_endpoint = GPT_4_API_BASE,
     deployment=EmbeddingModelDeploymentName))  # Modify as needed for Azure
 
-# Create the retriever
 retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
 
 
-# Update the qa_interface
 qa_interface = RetrievalQA.from_chain_type(
     llm=AzureChatOpenAI(openai_api_key=GPT_4_API_KEY,api_version=GPT_4_API_VERSION,base_url=GPT_4_API_BASE,azure_deployment=GPT_4_ID),
     chain_type="stuff",
