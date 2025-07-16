@@ -64,7 +64,7 @@ def ask_model(prompt):
         messages=[
             {"role": "user", "content": prompt},
         ],
-        model=GPT_4_ID  # Specify the appropriate model ID for Azure OpenAI
+        model=GPT_4_ID  
     )
     return response
 
@@ -86,12 +86,12 @@ directory = "index_store"
 vector_index = FAISS.from_documents(texts, AzureOpenAIEmbeddings(
     azure_endpoint = GPT_4_API_BASE,
     deployment=EmbeddingModelDeploymentName,
-    ))  # Modify as needed for Azure
+    ))  
 vector_index.save_local(directory)
 
 vector_index = FAISS.load_local("index_store", AzureOpenAIEmbeddings(
     azure_endpoint = GPT_4_API_BASE,
-    deployment=EmbeddingModelDeploymentName))  # Modify as needed for Azure
+    deployment=EmbeddingModelDeploymentName))  
 
 retriever = vector_index.as_retriever(search_type="similarity", search_kwargs={"k": 6})
 
